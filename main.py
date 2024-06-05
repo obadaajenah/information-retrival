@@ -156,37 +156,40 @@ if __name__ == "__main__":
 
 
     # dataset_path = r"D:\lotte\lifestyle\dev\coll.tsv"
+
     # data = load_dataset(dataset_path)
+
     # data['processed_text'] = data['text'].apply(process_text_via_service)
     # print(data['processed_text'])
+
     # cleanned_text = process_texts(data['text'])
     # data_texts = "Your sample text with numbers 1234 and punctuations!"
     # process=process_text_via_service(data_texts)
     # print(process)
-    # cleaned_text="E:\cleaned_texts.txt"
+    # cleaned_text="D:\cleaned_texts.txt"
     # processed_texts = read_cleaned_texts(cleaned_text)
     # print("read ...")
-    # query="are zebra loaches safe with shrimp?"
-    # cleanned_query=process_text_via_service(query)
-    # clinical_query="Meningioma NF2 (K322), AKT1(E17K) 45-year-old female None"
-    # cleanned_query_cli=process_text_via_service(clinical_query)
-    # print("processs...")
+    # # query="are zebra loaches safe with shrimp?"
+    # # cleanned_query=process_text_via_service(query)
+    # # clinical_query="Meningioma NF2 (K322), AKT1(E17K) 45-year-old female None"
+    # # cleanned_query_cli=process_text_via_service(clinical_query)
+    # # print("processs...")
     # data_vector_file ,vectorizer_file = index_texts_via_service(cleaned_text)
     # print("indexing ...")
     
-    # dataset_path = r"D:\lotte\lifestyle\dev\collection.tsv"
-    # dataset_path_cli=r"E:\your_dataset.tsv"
-    # data_vector_file= r"E:\DocumentVector.pkl"
-    # vectorizer_file= r"E:\TfidfVector.pkl"
-    # data_vector_file_cli= r"E:\DocumentVector_clinical.pkl"
-    # vectorizer_file_cli= r"E:\TfidfVector_clinical.pkl"
-    modfied_data=r"E:\modified_dataset.csv"
-    data = pd.read_csv(modfied_data)
-    data_vector_file ,vectorizer_file = index_texts_via_service_cli(data['title'] ,data['summary'] , data['detailed_description'], data['eligibility'] )
-    print("indexing ...")
-    print(data_vector_file)
-    print(vectorizer_file)
-    # queries_file =r"E:\qas.search.jsonl"
+    # dataset_path = r"D:\collection.tsv"
+    # dataset_path_cli=r"D:\your_dataset.tsv"
+    # data_vector_file= r"D:\DocumentVector.pkl"
+    # vectorizer_file= r"D:\TfidfVector.pkl"
+    # data_vector_file_cli= r"D:\DocumentVector_clinical.pkl"
+    # vectorizer_file_cli= r"D:\TfidfVector_clinical.pkl"
+    # modfied_data=r"D:\modified_dataset.csv"
+    # data = pd.read_csv(modfied_data)
+    # data_vector_file ,vectorizer_file = index_texts_via_service_cli(data['title'] ,data['summary'] , data['detailed_description'], data['eligibility'] )
+    # print("indexing ...")
+    # print(data_vector_file)
+    # print(vectorizer_file)
+    # queries_file =r"D:\qas.search.jsonl"
     # data_cli = load_dataset2(dataset_path)
     # # print( "data_vector_file:" , data_vector_file)
     # # print( "vectorizer_file:" , vectorizer_file)
@@ -205,4 +208,69 @@ if __name__ == "__main__":
 
 
 
-#########   process the first  data ##########################
+    #########   process the first  data ##########################
+
+    # query="are zebra loaches safe with shrimp?"
+    # cleanned_query=process_text_via_service(query)
+    # print(cleanned_query)
+    # dataset_path = r"D:\collection.tsv"
+    # data = load_dataset(dataset_path)
+    # data['processed_text'] = data['text'].apply(process_text_via_service)
+    
+
+##########################   process the secound dataset ##################
+
+    # clinical_query="Meningioma NF2 (K322), AKT1(E17K) 45-year-old female None"
+    # cleanned_query_cli=process_text_via_service(clinical_query)
+    # print(cleanned_query_cli)
+    # dataset_path_cli=r"D:\your_dataset.tsv"
+    # data_clic=load_dataset2(dataset_path_cli)
+    # data_clic['processed_title'] = data_clic['title'].apply(process_text_via_service)
+    # data_clic['processed_summary'] = data_clic['summary'].apply(process_text_via_service)
+    # data_clic['processed_detailed_description'] = data_clic['detailed_description'].apply(process_text_via_service)
+    # data_clic['processed_eligibility'] = data_clic['eligibility'].apply(process_text_via_service)
+
+
+
+
+
+    ################################## indexing the first data ######################################
+
+    # cleaned_text="D:\cleaned_texts.txt"
+    # data_vector_file ,vectorizer_file = index_texts_via_service(cleaned_text)
+    # print(data_vector_file)
+    # print(vectorizer_file)
+
+
+    ################################## indexing the secound data #######################################
+    
+    # modfied_data=r"D:\modified_dataset.csv"
+    # data = pd.read_csv(modfied_data)
+    # data_vector_file ,vectorizer_file = index_texts_via_service_cli(data['title'] ,data['summary'] , data['detailed_description'], data['eligibility'] )
+    # print("indexing ...")
+    # print(data_vector_file)
+    # print(vectorizer_file)
+
+
+############################ matching the first data ############################
+
+    # query="are zebra loaches safe with shrimp?"
+    # cleanned_query=process_text_via_service(query)
+    # print(cleanned_query)
+    # data_vector_file= r"D:\DocumentVector.pkl"
+    # vectorizer_file= r"D:\TfidfVector.pkl" 
+    # dataset_path = r"D:\collection.tsv"
+    # top_documents=calculate_similarity_via_service(cleanned_query, data_vector_file, vectorizer_file, dataset_path)
+    # print(top_documents)
+
+
+    ############################ matching the second data ############################
+
+    clinical_query="Meningioma NF2 (K322), AKT1(E17K) 45-year-old female None"
+    cleanned_query_cli=process_text_via_service(clinical_query)
+    print(cleanned_query_cli)
+    data_vector_file_cli= r"D:\DocumentVector_clinical.pkl"
+    vectorizer_file_cli= r"D:\TfidfVector_clinical.pkl"
+    dataset_path_cli=r"D:\your_dataset.tsv"
+    top_documents=calculate_similarity_via_service_cli(cleanned_query_cli, data_vector_file_cli, vectorizer_file_cli, dataset_path_cli)
+    print(top_documents)

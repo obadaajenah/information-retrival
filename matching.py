@@ -99,16 +99,16 @@ async def calculate_similarity_cli(request: Request):
     query = res.get("query",)
     data_vector_file= res.get("data_vector")
     vectorizer_file= res.get("vectorizer")
-    top_documents = SimilarityCalculator.get_documents_for_query2(query, data_vector_file,  vectorizer_file, data_file)
+    top_documents  ,cos_similarities = SimilarityCalculator.get_documents_for_query2(query, data_vector_file,  vectorizer_file, data_file)
  
-    # if isinstance(top_documents, dict) and "error" in top_documents:
-    #     print("isinstance....")
-    #     return top_documents
+    if isinstance(top_documents, dict) and "error" in top_documents:
+        print("isinstance....")
+        return top_documents
   
     top_documents = top_documents.fillna('')
     top_documents_json = top_documents.to_dict(orient='records')
     
-
+    # return {"message":"successfully get top documents"}
     return {"top_documents": top_documents_json}
 
 
